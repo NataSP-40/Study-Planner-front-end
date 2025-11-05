@@ -1,0 +1,120 @@
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  height: 100vh;
+  background: #f7f7fa;
+  gap: 2rem;
+}
+
+.dashboard-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+  min-width: 220px;
+}
+
+.dashboard-center {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+  min-width: 350px;
+}
+
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+  min-width: 220px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+  .dashboard-left,
+  .dashboard-center,
+  .dashboard-right {
+    min-width: unset;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Dashboard page specific styles moved from JSX */
+
+.mainTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.statsSection {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+}
+
+.addSubjectBtn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.addSubjectBtn:hover {
+  background-color: #0056b3;
+}
+
+.divider {
+  margin: 2rem 0;
+  border: none;
+  border-top: 2px solid #ccc;
+}
+
+.publicUsersSection {
+  margin-top: 2rem;
+}
+
+.legacyUserSection {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.legacyUserDesc {
+  font-size: 0.9rem;
+  color: #666;
+}
