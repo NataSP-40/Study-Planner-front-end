@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
-const NoteForm = ({ onSubmit, onCancel }) => {
+const NoteForm = ({
+  onSubmit,
+  onCancel,
+  initialData,
+  buttonText = "Add Note",
+}) => {
   const [formData, setFormData] = useState({
-    title: '',
-    content: '',
+    title: "",
+    content: "",
   });
+
+  // Populate form with initial data when editing
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        title: initialData.title || "",
+        content: initialData.content || "",
+      });
+    }
+  }, [initialData]);
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -14,20 +29,26 @@ const NoteForm = ({ onSubmit, onCancel }) => {
     evt.preventDefault();
     onSubmit(formData);
     // Reset form after submission
-    setFormData({ title: '', content: '' });
+    setFormData({ title: "", content: "" });
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ 
-      border: '1px solid #ccc', 
-      padding: '1rem', 
-      borderRadius: '8px',
-      marginBottom: '1rem',
-      backgroundColor: '#f9f9f9'
-    }}>
-      <h3>Add New Note</h3>
-      <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="title" style={{ display: 'block', marginBottom: '0.5rem' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        border: "1px solid #ccc",
+        padding: "1rem",
+        borderRadius: "8px",
+        marginBottom: "1rem",
+        backgroundColor: "#f9f9f9",
+      }}
+    >
+      <h3>{initialData ? "Edit Note" : "Add New Note"}</h3>
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          htmlFor="title"
+          style={{ display: "block", marginBottom: "0.5rem" }}
+        >
           Title:
         </label>
         <input
@@ -37,16 +58,19 @@ const NoteForm = ({ onSubmit, onCancel }) => {
           value={formData.title}
           onChange={handleChange}
           required
-          style={{ 
-            width: '100%', 
-            padding: '0.5rem', 
-            borderRadius: '4px', 
-            border: '1px solid #ddd' 
+          style={{
+            width: "100%",
+            padding: "0.5rem",
+            borderRadius: "4px",
+            border: "1px solid #ddd",
           }}
         />
       </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="content" style={{ display: 'block', marginBottom: '0.5rem' }}>
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          htmlFor="content"
+          style={{ display: "block", marginBottom: "0.5rem" }}
+        >
           Content:
         </label>
         <textarea
@@ -56,40 +80,40 @@ const NoteForm = ({ onSubmit, onCancel }) => {
           onChange={handleChange}
           required
           rows="5"
-          style={{ 
-            width: '100%', 
-            padding: '0.5rem', 
-            borderRadius: '4px', 
-            border: '1px solid #ddd',
-            resize: 'vertical'
+          style={{
+            width: "100%",
+            padding: "0.5rem",
+            borderRadius: "4px",
+            border: "1px solid #ddd",
+            resize: "vertical",
           }}
         />
       </div>
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button 
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        <button
           type="submit"
-          style={{ 
-            padding: '0.5rem 1rem', 
-            backgroundColor: '#28a745', 
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '4px',
-            cursor: 'pointer'
+          style={{
+            padding: "0.5rem 1rem",
+            backgroundColor: "#28a745",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
           }}
         >
-          Add Note
+          {buttonText}
         </button>
         {onCancel && (
-          <button 
+          <button
             type="button"
             onClick={onCancel}
-            style={{ 
-              padding: '0.5rem 1rem', 
-              backgroundColor: '#6c757d', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '4px',
-              cursor: 'pointer'
+            style={{
+              padding: "0.5rem 1rem",
+              backgroundColor: "#6c757d",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
             }}
           >
             Cancel

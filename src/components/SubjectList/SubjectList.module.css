@@ -1,9 +1,13 @@
 .container {
   gap: 14px;
-  width: 500px;
+  width: 100%;
+  max-width: 600px;
+  margin: 100px auto 0 auto; /* push below navbar, center horizontally */
   display: grid;
   padding: 21px;
   grid-template-columns: repeat(1, 1fr);
+  box-sizing: border-box;
+  z-index: 0;
 }
 .container article {
   width: 100%;
@@ -60,4 +64,30 @@
   padding: 3px;
   border-radius: 50%;
   border: 1px solid var(--border);
+}
+
+/* Top row for subject list title + add button */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Add subject button (moved from Dashboard.module.css for local clarity) */
+.add-subject-btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  font-weight: 500;
+}
+
+.add-subject-btn:hover {
+  background-color: #0056b3;
+  text-decoration: none;
 }

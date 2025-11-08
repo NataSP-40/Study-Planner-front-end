@@ -62,47 +62,36 @@ const Dashboard = () => {
   console.log("studyStatsSubjects", studyStatsSubjects);
 
   return (
-    <main>
-      <h1 className={styles.mainTitle}>Welcome, {user.username}</h1>
+    <main className={styles["dashboard-container"]}>
+      {/* Left: Study Statistics */}
+      <aside className={styles["dashboard-left"]}>
+        <StudyStats subjects={subjects} />
+      </aside>
 
-      {/* Study Statistics */}
-      <StudyStats subjects={subjects} />
+      {/* Center: Subject List */}
+      <section className={styles["dashboard-center"]}>
+        <h1 className={styles["main-title"]}>Welcome, {user.username}</h1>
 
-      {/* User's own subjects section */}
-      <section className={styles.statsSection}>
-        <h2>My Subjects</h2>
-        <Link to="/subjects/new" className={styles.addSubjectBtn}>
-          + Add New Subject
-        </Link>
-        {subjects.length > 0 ? (
-          <SubjectList subjects={subjects} />
-        ) : (
-          <p>
-            You haven't created any subjects yet. Start by adding a new subject!
-          </p>
-        )}
+        <div className={styles["stats-section"]}>
+          <h2>My Subjects</h2>
+          <Link to="/subjects/new" className={styles["add-subject-btn"]}>
+            + Add New Subject
+          </Link>
+          {subjects.length > 0 ? (
+            <SubjectList subjects={subjects} />
+          ) : (
+            <p>
+              You haven't created any subjects yet. Start by adding a new
+              subject!
+            </p>
+          )}
+        </div>
       </section>
 
-      {/* Divider */}
-      <hr className={styles.divider} />
-
-      {/* Public view of all users section */}
-      <section className={styles.publicUsersSection}>
+      {/* Right: Public Users */}
+      <aside className={styles["dashboard-right"]}>
         <PublicUserList users={usersWithSubjects} />
-      </section>
-
-      {/* Legacy user list - keeping for backward compatibility */}
-      <section className={styles.legacyUserSection}>
-        <h3>All Users</h3>
-        <p className={styles.legacyUserDesc}>
-          This is the dashboard page where you can see a list of all the users.
-        </p>
-        <ul>
-          {users.map((user) => (
-            <li key={user._id}>{user.username}</li>
-          ))}
-        </ul>
-      </section>
+      </aside>
     </main>
   );
 };

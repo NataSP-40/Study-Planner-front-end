@@ -35,6 +35,29 @@ const App = () => {
     navigate("/subjects");
   };
 
+  const handleDeleteSubject = async (subjectId) => {
+    const deletedSubject = await studyService.deleteSubject(subjectId);
+    // filter state using deletedSubject._id
+    setSubjects(
+      subjects.filter((subject) => subject._id !== deletedSubject._id)
+    );
+    navigate("/subjects");
+  };
+
+  const handleUpdateSubject = async (subjectId, subjectFormData) => {
+    console.log("Updating subject:", subjectId, subjectFormData);
+    const updatedSubject = await studyService.updateSubject(
+      subjectId,
+      subjectFormData
+    );
+    setSubjects(
+      subjects.map((subject) =>
+        subjectId === subject._id ? updatedSubject : subject
+      )
+    );
+    navigate(`/subjects/${subjectId}`);
+  };
+
   return (
     <>
       <NavBar />
@@ -46,12 +69,23 @@ const App = () => {
               path="/subjects"
               element={<SubjectList subjects={subjects} />}
             />
-            <Route path="/subjects/:id" element={<SubjectDetails />} />
-            <Route path="/notes" element={<NoteList subjects={subjects} />} />
             <Route
               path="/subjects/new"
               element={<SubjectForm handleAddSubject={handleAddSubject} />}
             />
+            <Route
+              path="/subjects/:subjectId/edit"
+              element={
+                <SubjectForm handleUpdateSubject={handleUpdateSubject} />
+              }
+            />
+            <Route
+              path="/subjects/:subjectId"
+              element={
+                <SubjectDetails handleDeleteSubject={handleDeleteSubject} />
+              }
+            />
+            <Route path="/notes" element={<NoteList subjects={subjects} />} />
           </>
         ) : (
           <>

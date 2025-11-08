@@ -12,9 +12,10 @@ const StudyStats = (props) => {
         )}
       </p>
       <p>
-        Total Study Time:{" "}
+        Total Study Sessions:{" "}
         {props.subjects.reduce(
-          (acc, subject) => acc + (subject.studyTime ? subject.studyTime : 0),
+          (acc, subject) =>
+            acc + (subject.studySessions ? subject.studySessions.length : 0),
           0
         )}{" "}
         hours

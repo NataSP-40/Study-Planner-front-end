@@ -27,9 +27,6 @@ const NavBar = () => {
             <Link to="/notes">Notes</Link>
           </li>
           <li>
-            <input type="text" placeholder="Search notes..." />
-          </li>
-          <li>
             <Link to="/" onClick={handleSignOut}>
               Logout
             </Link>

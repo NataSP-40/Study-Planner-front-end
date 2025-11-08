@@ -4,7 +4,12 @@ import styles from "./SubjectList.module.css";
 const SubjectList = (props) => {
   return (
     <main className={styles.container}>
-      <h2>Subject List</h2>
+      <div className={styles["top-row"]}>
+        <h2>Subject List</h2>
+        {/* <Link to="/subjects/new" className={styles["add-subject-btn"]}>
+          + Add New Subject
+        </Link> */}
+      </div>
       {/* Render subject list here */}
 
       {props.subjects.map((subject) => (
@@ -13,8 +18,9 @@ const SubjectList = (props) => {
             <header>
               <h2>{subject.name}</h2>
               <p>
-                {`${subject.notes?.length || 0} posted on
-                    ${new Date(subject.createdAt).toLocaleDateString()}`}
+                {`${subject.notes?.length || 0} posted on ${new Date(
+                  subject.createdAt
+                ).toLocaleDateString()}`}
               </p>
             </header>
             <p>{subject.description}</p>
