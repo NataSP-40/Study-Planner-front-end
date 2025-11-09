@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import RichTextEditor from "../RichTextEditor";
 
 const NoteForm = ({
   onSubmit,
@@ -73,12 +74,12 @@ const NoteForm = ({
         >
           Content:
         </label>
-        <textarea
+        <RichTextEditor
           id="content"
           name="content"
           value={formData.content}
-          onChange={handleChange}
-          required
+          onChange={(value) => setFormData({ ...formData, content: value })}
+          placeholder="Write your note here..."
           rows="5"
           style={{
             width: "100%",

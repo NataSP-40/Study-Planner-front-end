@@ -9,7 +9,7 @@ import * as studyService from "../../services/studyService";
 
 import SubjectList from "../SubjectList/SubjectList";
 import PublicUserList from "../PublicUserList/PublicUserList";
-import StudyStats from "../StudyStats/StudyStats";
+import StudySessions from "../StudySessions/StudySessions";
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
@@ -57,15 +57,11 @@ const Dashboard = () => {
     if (user) fetchUsersWithSubjects();
   }, [user]);
 
-  // pass the subjects to StudyStats component
-  const studyStatsSubjects = subjects;
-  console.log("studyStatsSubjects", studyStatsSubjects);
-
   return (
     <main className={styles["dashboard-container"]}>
-      {/* Left: Study Statistics */}
+      {/* Left: Study Sessions */}
       <aside className={styles["dashboard-left"]}>
-        <StudyStats subjects={subjects} />
+        <StudySessions subjects={subjects} />
       </aside>
 
       {/* Center: Subject List */}
@@ -73,10 +69,12 @@ const Dashboard = () => {
         <h1 className={styles["main-title"]}>Welcome, {user.username}</h1>
 
         <div className={styles["stats-section"]}>
-          <h2>My Subjects</h2>
-          <Link to="/subjects/new" className={styles["add-subject-btn"]}>
-            + Add New Subject
-          </Link>
+          <div className={styles["section-header"]}>
+            <h2>Subject List</h2>
+            <Link to="/subjects/new" className={styles["add-subject-btn"]}>
+              + Add New Subject
+            </Link>
+          </div>
           {subjects.length > 0 ? (
             <SubjectList subjects={subjects} />
           ) : (

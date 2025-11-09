@@ -6,28 +6,46 @@ const SubjectList = (props) => {
     <main className={styles.container}>
       <div className={styles["top-row"]}>
         <h2>Subject List</h2>
-        {/* <Link to="/subjects/new" className={styles["add-subject-btn"]}>
-          + Add New Subject
-        </Link> */}
       </div>
       {/* Render subject list here */}
 
-      {props.subjects.map((subject) => (
-        <Link key={subject._id} to={`/subjects/${subject._id}`}>
-          <article>
+      {props.subjects.map((subject) => {
+        const notesCount = subject.notes?.length || 0;
+        const sessionsCount = subject.studySessions?.length || 0;
+
+        return (
+          <article key={subject._id} className={styles.card}>
             <header>
-              <h2>{subject.name}</h2>
-              <p>
-                {`${subject.notes?.length || 0} posted on ${new Date(
-                  subject.createdAt
-                ).toLocaleDateString()}`}
+              <h2>
+                <Link to={`/subjects/${subject._id}`}>{subject.name}</Link>
+              </h2>
+              <p className={styles["date-info"]}>
+                Posted on {new Date(subject.createdAt).toLocaleDateString()}
               </p>
             </header>
-            <p>{subject.description}</p>
-            <p>{subject.notes?.length || 0} notes</p>
+
+            <div className={styles["card-content"]}>
+              {sessionsCount > 0 && (
+                <p className={styles["info-item"]}>
+                  <span className={styles.icon}>📅</span>
+                  {sessionsCount} study session{sessionsCount !== 1 ? "s" : ""}
+                </p>
+              )}
+              <p className={styles["info-item"]}>
+                <span className={styles.icon}>📝</span>
+                {notesCount} note{notesCount !== 1 ? "s" : ""}
+              </p>
+            </div>
+
+            <Link
+              to={`/subjects/${subject._id}`}
+              className={styles["view-details"]}
+            >
+              View Details →
+            </Link>
           </article>
-        </Link>
-      ))}
+        );
+      })}
       {props.subjects.length === 0 && <p>No subjects found.</p>}
     </main>
   );

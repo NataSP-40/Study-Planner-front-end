@@ -1,21 +1,22 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router";
 
-import { signIn } from '../../services/authService';
+import { signIn } from "../../services/authService";
 
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext } from "../../contexts/UserContext";
+import styles from "./SignInForm.module.css";
 
 const SignInForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (evt) => {
-    setMessage('');
+    setMessage("");
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
@@ -24,46 +25,75 @@ const SignInForm = () => {
     try {
       const signedInUser = await signIn(formData);
       setUser(signedInUser);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setMessage(err.message);
     }
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <p>{message}</p>
-      <form autoComplete='off' onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Username:</label>
-          <input
-            type='text'
-            autoComplete='off'
-            id='username'
-            value={formData.username}
-            name='username'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            autoComplete='off'
-            id='password'
-            value={formData.password}
-            name='password'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
-        </div>
-      </form>
+    <main className={styles.signInContainer}>
+      <div className={styles.formCard}>
+        <h1 className={styles.title}>Welcome Back</h1>
+        <p className={styles.subtitle}>
+          Sign in to continue your learning journey
+        </p>
+        {message && <p className={styles.errorMessage}>{message}</p>}
+        <form
+          autoComplete="off"
+          onSubmit={handleSubmit}
+          className={styles.form}
+        >
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>
+              Username:
+            </label>
+            <input
+              type="text"
+              autoComplete="off"
+              id="username"
+              value={formData.username}
+              name="username"
+              onChange={handleChange}
+              required
+              className={styles.input}
+              placeholder="Enter your username"
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.label}>
+              Password:
+            </label>
+            <input
+              type="password"
+              autoComplete="off"
+              id="password"
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
+              required
+              className={styles.input}
+              placeholder="Enter your password"
+            />
+          </div>
+          <div className={styles.buttonGroup}>
+            <button className={styles.submitButton}>Sign In</button>
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className={styles.cancelButton}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+        <p className={styles.signupPrompt}>
+          Don't have an account?{" "}
+          <Link to="/sign-up" className={styles.link}>
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </main>
   );
 };

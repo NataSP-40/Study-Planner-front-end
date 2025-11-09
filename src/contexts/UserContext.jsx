@@ -7,7 +7,9 @@ const getUserFromToken = () => {
 
   if (!token) return null;
 
-  return JSON.parse(atob(token.split(".")[1]));
+  const decoded = JSON.parse(atob(token.split(".")[1]));
+  console.log("Decoded user from token:", decoded);
+  return decoded;
 };
 
 function UserProvider({ children }) {

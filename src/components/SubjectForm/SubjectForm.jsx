@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./SubjectForm.module.css";
 import { useParams } from "react-router";
 import * as studyService from "../../services/studyService";
+import RichTextEditor from "../RichTextEditor";
 
 const SubjectForm = (props) => {
   const { subjectId } = useParams();
@@ -23,6 +24,10 @@ const SubjectForm = (props) => {
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
+
+  const handleDescriptionChange = (value) => {
+    setFormData({ ...formData, description: value });
   };
 
   const handleSubmit = (evt) => {
@@ -53,12 +58,9 @@ const SubjectForm = (props) => {
         </div>
         <div className={styles["form-group"]}>
           <label htmlFor="description">Description:</label>
-          <textarea
-            required
-            id="description"
-            name="description"
+          <RichTextEditor
             value={formData.description}
-            onChange={handleChange}
+            onChange={handleDescriptionChange}
             placeholder="Describe what you'll be studying..."
           />
         </div>

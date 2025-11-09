@@ -11,6 +11,8 @@ import SubjectList from "./components/SubjectList/SubjectList";
 import NoteList from "./components/NoteList/NoteList";
 import SubjectDetails from "./components/SubjectDetails/SubjectDetails";
 import SubjectForm from "./components/SubjectForm/SubjectForm";
+import NoteForm from "./components/NoteForm/NoteForm";
+import NoteEditPage from "./components/NoteEditPage/NoteEditPage";
 
 import { UserContext } from "./contexts/UserContext";
 
@@ -85,7 +87,11 @@ const App = () => {
                 <SubjectDetails handleDeleteSubject={handleDeleteSubject} />
               }
             />
-            <Route path="/notes" element={<NoteList subjects={subjects} />} />
+            <Route 
+              path="/subjects/:subjectId/edit-note/:noteId" 
+              element={<NoteEditPage />} 
+            />
+            <Route path="/notes" element={<NoteList />} />
           </>
         ) : (
           <>
