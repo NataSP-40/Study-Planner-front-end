@@ -1,11 +1,14 @@
 import { Link } from "react-router";
-import styles from "./SubjectList.module.css";
+import styles from "./SubjectList.module.scss";
 
 const SubjectList = (props) => {
   return (
     <main className={styles.container}>
       <div className={styles["top-row"]}>
         <h2>Subject List</h2>
+        <Link to="/subjects/new" className={styles["add-subject-btn"]}>
+          + Add New Subject
+        </Link>
       </div>
       {/* Render subject list here */}
 

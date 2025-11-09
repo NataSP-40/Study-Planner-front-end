@@ -1,10 +1,18 @@
+// ============================================
+// Import SCSS utilities
+// ============================================
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ============================================
+// Landing Page Styles
+// ============================================
+
 .landingContainer {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  @include flex-center;
+  padding: $spacing-xl;
+  background: linear-gradient(135deg, $primary-color 0%, #764ba2 100%);
 }
 
 .contentWrapper {
@@ -18,8 +26,7 @@
 
 .leftSection {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: flex-start;
   color: white;
   position: relative;
@@ -31,21 +38,21 @@
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-}
+  transition: $transition-base;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-sm;
 
-.loginLink:hover {
-  color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  &:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
 }
 
 .appName {
   font-size: 4rem;
   font-weight: 700;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 $spacing-lg 0;
   line-height: 1.2;
   background: linear-gradient(to right, #fff, #f0f0f0);
   -webkit-background-clip: text;
@@ -63,47 +70,48 @@
 
 .ctaButton {
   display: inline-block;
-  padding: 1rem 2.5rem;
+  padding: $spacing-md $spacing-xl * 1.5;
   background-color: white;
-  color: #667eea;
+  color: $primary-color;
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 50px;
-  transition: all 0.3s ease;
+  transition: $transition-base;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
 
-.ctaButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  background-color: #f8f8f8;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background-color: #f8f8f8;
+  }
 }
 
 .rightSection {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 }
 
 .imagePlaceholder {
   width: 100%;
   height: 500px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: $radius-xl; // Changed from 20px to use variable
+  @include flex-center;
+  overflow: hidden; // Ensures image respects border-radius
+  // border removed - no more dashed lines!
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Makes image fit nicely
+    border-radius: $radius-xl; // Apply radius to image too
+  }
 }
 
-.imagePlaceholder p {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1.2rem;
-}
-
-/* Responsive Design */
+// ============================================
+// Responsive Design - Using SCSS Nesting
+// ============================================
 @media (max-width: 968px) {
   .contentWrapper {
     flex-direction: column;
@@ -117,7 +125,7 @@
 
   .loginLink {
     position: static;
-    margin-bottom: 2rem;
+    margin-bottom: $spacing-xl;
   }
 
   .appName {
@@ -139,7 +147,7 @@
 
 @media (max-width: 640px) {
   .landingContainer {
-    padding: 1rem;
+    padding: $spacing-md;
   }
 
   .appName {
@@ -151,8 +159,7 @@
   }
 
   .ctaButton {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
+    padding: $spacing-sm * 1.5 $spacing-xl;
   }
 
   .imagePlaceholder {

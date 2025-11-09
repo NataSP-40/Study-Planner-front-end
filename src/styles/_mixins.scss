@@ -1,0 +1,156 @@
+// ============================================
+// SCSS MIXINS - Reusable Style Patterns
+// ============================================
+
+@use './variables' as *;
+
+// Flexbox centering - use this instead of repeating flex code
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Card style - consistent card appearance
+@mixin card($padding: $spacing-lg) {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $padding;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// Button base styles
+@mixin button-base {
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-fast;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Primary button
+@mixin button-primary {
+  @include button-base;
+  background: $primary-color;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: $primary-dark;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Secondary button
+@mixin button-secondary {
+  @include button-base;
+  background: $secondary-color;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: $secondary-dark;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+// Text truncation (ellipsis)
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (min-width: $breakpoint-wide) {
+    @content;
+  }
+}
+
+// Input field styling
+@mixin input-field {
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $radius-md;
+  font-size: 1rem;
+  transition: $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+// Smooth scroll behavior
+@mixin smooth-scroll {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg-secondary;
+    border-radius: $radius-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $border-color;
+    border-radius: $radius-sm;
+
+    &:hover {
+      background: $border-dark;
+    }
+  }
+}

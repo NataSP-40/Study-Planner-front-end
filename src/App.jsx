@@ -87,9 +87,9 @@ const App = () => {
                 <SubjectDetails handleDeleteSubject={handleDeleteSubject} />
               }
             />
-            <Route 
-              path="/subjects/:subjectId/edit-note/:noteId" 
-              element={<NoteEditPage />} 
+            <Route
+              path="/subjects/:subjectId/edit-note/:noteId"
+              element={<NoteEditPage />}
             />
             <Route path="/notes" element={<NoteList />} />
           </>

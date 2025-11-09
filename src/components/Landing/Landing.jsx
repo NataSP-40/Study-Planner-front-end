@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
-import styles from './Landing.module.css';
+import { Link } from "react-router";
+import styles from "./Landing.module.scss";
 
 const Landing = () => {
   return (
@@ -11,7 +11,8 @@ const Landing = () => {
           </Link>
           <h1 className={styles.appName}>Study Planner</h1>
           <p className={styles.welcomeMessage}>
-            Welcome! Organize your studies, track your progress, and achieve your learning goals with ease.
+            Welcome! Organize your studies, track your progress, and achieve
+            your learning goals with ease.
           </p>
           <Link to="/sign-up" className={styles.ctaButton}>
             Get Started
@@ -20,7 +21,11 @@ const Landing = () => {
         <div className={styles.rightSection}>
           {/* Image will be added here later */}
           <div className={styles.imagePlaceholder}>
-            <p>Your image goes here</p>
+            {/* <p>Your image goes here</p> */}
+            <img
+              src="https://i.ibb.co/nMZcP0SH/Logo2.png"
+              alt="Study Planner Logo"
+            />
           </div>
         </div>
       </div>

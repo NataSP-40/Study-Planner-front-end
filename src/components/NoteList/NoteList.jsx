@@ -54,9 +54,11 @@ const NoteList = () => {
   };
 
   const handleDeleteNote = async (subjectId, noteId) => {
-    const confirmed = window.confirm("Are you sure you want to delete this note?");
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
     if (!confirmed) return;
-    
+
     try {
       await studyService.deleteNote(subjectId, noteId);
       setNotes(notes.filter((note) => note._id !== noteId));
@@ -127,7 +129,13 @@ const NoteList = () => {
                     {isExpanded ? "▼" : "▶"}
                   </span>
                 </h4>
-                <p style={{ color: "#7f8c8d", fontSize: "14px", margin: "5px 0" }}>
+                <p
+                  style={{
+                    color: "#7f8c8d",
+                    fontSize: "14px",
+                    margin: "5px 0",
+                  }}
+                >
                   Subject: {note.subject?.name || "Unknown Subject"}
                 </p>
               </div>
@@ -153,7 +161,9 @@ const NoteList = () => {
                       overflowY: "auto",
                     }}
                   >
-                    <h5 style={{ marginTop: 0, color: "#34495e" }}>Note Content:</h5>
+                    <h5 style={{ marginTop: 0, color: "#34495e" }}>
+                      Note Content:
+                    </h5>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(note.content),
@@ -162,7 +172,9 @@ const NoteList = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <div
+                    style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}
+                  >
                     <button
                       onClick={() =>
                         navigate(
@@ -183,7 +195,9 @@ const NoteList = () => {
                     </button>
 
                     <button
-                      onClick={() => handleDeleteNote(note.subject._id, note._id)}
+                      onClick={() =>
+                        handleDeleteNote(note.subject._id, note._id)
+                      }
                       style={{
                         background: "#e74c3c",
                         color: "white",

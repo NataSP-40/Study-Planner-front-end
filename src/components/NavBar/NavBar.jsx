@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { Link } from "react-router";
-import styles from "./NavBar.module.css";
+import { Link, NavLink } from "react-router";
+import styles from "./NavBar.module.scss";
 
 import { UserContext } from "../../contexts/UserContext";
 
@@ -16,15 +16,15 @@ const NavBar = () => {
     <nav className={styles.container}>
       {user ? (
         <ul>
-          <li>Welcome, {user.username}</li>
+          <li>Study Planner</li>
           <li>
-            <Link to="/">Dashboard</Link>
+            <NavLink to="/">Dashboard</NavLink>
           </li>
           <li>
-            <Link to="/subjects">Subjects</Link>
+            <NavLink to="/subjects">Subjects</NavLink>
           </li>
           <li>
-            <Link to="/notes">Notes</Link>
+            <NavLink to="/notes">Notes</NavLink>
           </li>
           <li>
             <Link to="/" onClick={handleSignOut}>
@@ -35,13 +35,13 @@ const NavBar = () => {
       ) : (
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/sign-in">Login</Link>
+            <NavLink to="/sign-in">Login</NavLink>
           </li>
           <li>
-            <Link to="/sign-up">Sign Up</Link>
+            <NavLink to="/sign-up">Sign Up</NavLink>
           </li>
         </ul>
       )}

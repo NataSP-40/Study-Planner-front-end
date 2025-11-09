@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as studyService from "../../services/studyService";
 import StudySessionForm from "../StudySessionForm/StudySessionForm";
 import DOMPurify from "dompurify";
-import styles from "./StudySessions.module.css";
+import styles from "./StudySessions.module.scss";
 
 const StudySessions = ({ subjectId = null, subjects = [] }) => {
   const [sessions, setSessions] = useState([]);

@@ -1,0 +1,62 @@
+// ============================================
+// SCSS VARIABLES - Study Planner
+// ============================================
+
+// Primary Color Palette
+$primary-color: #667eea;
+$primary-dark: #226287;
+$primary-light: #6fa8c6;
+
+// Secondary Colors
+$secondary-color: #50c878;
+$secondary-dark: #3da05f;
+$secondary-light: #6dd48d;
+
+// Neutral Colors
+$text-primary: #2c3e50;
+$text-secondary: #8f9b9c;
+$text-light: #e1ebeb;
+
+// Background Colors
+$bg-primary: #f4eded;
+$bg-secondary: #dadae2;
+$bg-accent: #dfe4ed;
+
+// Border Colors
+$border-color: #abc0c9;
+$border-dark: #b2bec3;
+
+// Status Colors
+$error-color: #e74c3c;
+$info-color: #3498db;
+$success-color: #27ae60;
+$warning-color: #f39c12;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+
+// Transitions
+$transition-fast: 150ms ease-in-out;
+$transition-base: 250ms ease-in-out;
+$transition-slow: 350ms ease-in-out;
+
+// Breakpoints for responsive design
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1280px;

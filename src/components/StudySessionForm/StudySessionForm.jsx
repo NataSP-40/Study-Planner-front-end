@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./StudySessionForm.module.css";
+import styles from "./StudySessionForm.module.scss";
 import * as studyService from "../../services/studyService";
 
 const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {

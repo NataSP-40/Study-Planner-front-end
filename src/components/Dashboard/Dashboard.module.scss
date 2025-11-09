@@ -1,0 +1,119 @@
+// ============================================
+// Import SCSS utilities
+// ============================================
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ============================================
+// Dashboard Layout
+// ============================================
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: calc(100vh - 160px);
+  margin-top: 100px;
+  margin-bottom: $spacing-xl;
+  background: $bg-secondary;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+  box-sizing: border-box;
+}
+
+// Shared panel styles using nesting
+.dashboard-left,
+.dashboard-center,
+.dashboard-right {
+  @include flex-column;
+  @include card($spacing-lg);
+  @include smooth-scroll;
+  
+  // Each panel can have specific overrides
+}
+
+.dashboard-left {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.dashboard-center {
+  flex: 2;
+  padding: $spacing-xl;
+  min-width: 400px;
+}
+
+.dashboard-right {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+
+// ============================================
+// Responsive Design - Using mixin
+// ============================================
+@include desktop {
+  .dashboard-container {
+    flex-direction: column;
+    padding: $spacing-md;
+    margin-top: 80px;
+  }
+
+  .dashboard-left,
+  .dashboard-center,
+  .dashboard-right {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
+  .add-subject-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+// ============================================
+// Dashboard Components with Nesting
+// ============================================
+.main-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+  color: $text-primary;
+}
+
+.stats-section {
+  margin-top: $spacing-md;
+  background-color: $bg-accent;
+  border-radius: $radius-md;
+  width: 100%;
+
+  // Nested heading style
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: $text-primary;
+  }
+}
+
+.section-header {
+  @include flex-between;
+  margin-bottom: $spacing-md;
+}
+
+.add-subject-btn {
+  @include button-primary;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+

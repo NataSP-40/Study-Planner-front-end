@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import styles from "./SubjectForm.module.css";
+import styles from "./SubjectForm.module.scss";
 import { useParams } from "react-router";
 import * as studyService from "../../services/studyService";
 import RichTextEditor from "../RichTextEditor";
 
 const SubjectForm = (props) => {
   const { subjectId } = useParams();
-  console.log("subjectId", subjectId);
+  // console.log("subjectId", subjectId);
 
   const [formData, setFormData] = useState({
     name: "",

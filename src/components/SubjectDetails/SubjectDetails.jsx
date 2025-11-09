@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import * as studyService from "../../services/studyService";
-import { useParams, Link } from "react-router";
+import { useParams, Link, useNavigate } from "react-router";
 import DOMPurify from "dompurify";
 import NoteForm from "../NoteForm/NoteForm";
 import StudySessions from "../StudySessions/StudySessions";
 import { UserContext } from "../../contexts/UserContext";
-import styles from "./SubjectDetails.module.css";
+import styles from "./SubjectDetails.module.scss";
 
 const SubjectDetails = (props) => {
   const { subjectId } = useParams();
@@ -14,6 +14,7 @@ const SubjectDetails = (props) => {
   const [showNoteForm, setShowNoteForm] = useState(false);
   const { user } = useContext(UserContext);
   const [editingNoteId, setEditingNoteId] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch subject details]
 
@@ -27,12 +28,26 @@ const SubjectDetails = (props) => {
   }, [subjectId]);
 
   // Delete subject handler
-  const handleDelete = () => {
-    console.log("Delete button clicked, subject ID:", subjectId);
-    if (window.confirm(`Are you sure you want to delete "${subject.name}"?`)) {
-      props.handleDeleteSubject(subjectId);
+  const handleDelete = async () => {
+    console.log("=== DELETE DEBUG ===");
+    console.log("subjectId from useParams:", subjectId);
+    console.log("subject object:", subject);
+    console.log("subject._id:", subject?._id);
+    console.log("==================");
+    try {
+      await props.handleDeleteSubject(subjectId);
+    } catch (error) {
+      console.log("Error deleting subject:", error); // Catch errors specific to this component
     }
   };
+  // const handleDelete = async () => {
+  //   console.log("Delete button clicked, subject ID:", subjectId);
+  //   try {
+  //     await props.handleDeleteSubject(subjectId);
+  //   } catch (error) {
+  //     console.log("Error deleting subject:", error);
+  //   }
+  // };
 
   const handleAddNote = async (noteFormData) => {
     try {

@@ -1,0 +1,126 @@
+// ============================================
+// Import SCSS utilities
+// ============================================
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ============================================
+// NavBar Styles
+// ============================================
+
+.container {
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  position: fixed;
+  padding: 14px 21px;
+  align-items: center;
+  background: $bg-primary;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $spacing-xl;
+  box-shadow: $shadow-sm;
+
+  // Logo/Brand image
+  img {
+    width: 50px;
+  }
+
+  // Navigation list
+  ul {
+    margin: 0;
+    padding: 0;
+    width: 97%;
+    display: flex;
+    list-style: none;
+    font-weight: bold;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-lg;
+  }
+
+  // List items
+  li {
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 20px;
+    color: $primary-color;
+    font-weight: 600;
+
+    // Brand name (first item)
+    &:first-child {
+      color: $primary-color;
+      font-weight: 800;
+      margin-right: auto;
+    }
+
+    // Logout button (last item)
+    &:last-child a {
+      @include button-primary;
+      padding: 10px 20px;
+    }
+  }
+
+  // Navigation links (both Link and NavLink)
+  a {
+    color: $text-primary;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    transition: $transition-fast;
+    display: inline-block;
+    white-space: nowrap;
+
+    // Hover state
+    &:hover {
+      background-color: $bg-accent;
+      color: $primary-color;
+      text-decoration: none;
+    }
+
+    // ⭐ ACTIVE state (NavLink automatically adds this class)
+    &.active {
+      background-color: $primary-color;
+      color: white;
+      font-weight: 700;
+      box-shadow: $shadow-md;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// ============================================
+// Responsive Design
+// ============================================
+
+@media only screen and (max-width: 414px) {
+  .container {
+    padding: 10px 15px;
+
+    ul {
+      padding-left: 0px;
+      gap: $spacing-sm;
+    }
+
+    li {
+      font-size: 20px;
+
+      &:first-child {
+        font-size: 12px;
+        max-width: 100px;
+        @include truncate;
+      }
+
+      &:last-child a {
+        padding: 8px 12px;
+      }
+    }
+
+    a {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+  }
+}

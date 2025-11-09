@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router";
-import styles from "./Dashboard.module.css";
+import styles from "./Dashboard.module.scss";
 
 import { UserContext } from "../../contexts/UserContext";
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
         const fetchedUsersWithSubjects = await userService.indexWithSubjects();
         // Filter out the current user from the public list
         const otherUsers = fetchedUsersWithSubjects.filter(
-          (u) => u._id !== user._id
+          (u) => u._id !== user.payload._id
         );
         setUsersWithSubjects(otherUsers);
       } catch (err) {
@@ -56,7 +56,7 @@ const Dashboard = () => {
     };
     if (user) fetchUsersWithSubjects();
   }, [user]);
-
+  console.log("User object:", user);
   return (
     <main className={styles["dashboard-container"]}>
       {/* Left: Study Sessions */}
@@ -66,15 +66,12 @@ const Dashboard = () => {
 
       {/* Center: Subject List */}
       <section className={styles["dashboard-center"]}>
-        <h1 className={styles["main-title"]}>Welcome, {user.username}</h1>
+        <h1 className={styles["main-title"]}>
+          Welcome, {user.payload.username}
+        </h1>
 
-        <div className={styles["stats-section"]}>
-          <div className={styles["section-header"]}>
-            <h2>Subject List</h2>
-            <Link to="/subjects/new" className={styles["add-subject-btn"]}>
-              + Add New Subject
-            </Link>
-          </div>
+        <div className={styles["stats-sectsion"]}>
+          <div className={styles["section-header"]}></div>
           {subjects.length > 0 ? (
             <SubjectList subjects={subjects} />
           ) : (
