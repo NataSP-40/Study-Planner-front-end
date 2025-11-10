@@ -132,6 +132,7 @@ Study-Planner-front-end/
 │   │   ├── SubjectDetails/ # Individual subject view
 │   │   ├── SubjectForm/    # Subject creation/editing
 │   │   └── SubjectList/    # Subjects display
+│   │   └── RichTextEditor.jsx # Rich text editor component
 │   ├── contexts/           # React Context providers
 │   │   └── UserContext.jsx # User authentication context
 │   ├── services/           # API service modules
