@@ -1,10 +1,9 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/subjects`;
-// IMPORTANT: keep this on one line to avoid stray newlines in the URL
 const SESSIONS_BASE_URL = `${
   import.meta.env.VITE_BACK_END_SERVER_URL
 }/sessions`;
 
-// ======== Study Subjects ========
+// ======== Subjects ========
 // Get all subjects
 const index = async () => {
   try {
@@ -28,58 +27,6 @@ const show = async (subjectId) => {
     console.log(err);
   }
 };
-
-//======= Notes ========
-// Create a new note for a subject
-const createNote = async (subjectId, noteFormData) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${subjectId}/notes`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(noteFormData),
-    });
-    return res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-// Delete a note
-const deleteNote = async (subjectId, noteId) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    if (res.status === 204) return true;
-    return res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-// update a note
-const updateNote = async (subjectId, noteId, noteFormData) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(noteFormData),
-    });
-    return res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 // Create a new subject
 const createSubject = async (subjectFormData) => {
   try {
@@ -137,6 +84,54 @@ async function updateSubject(subjectId, subjectFormData) {
     console.log(err);
   }
 }
+//======= Notes ========
+// Create a new note for a subject
+const createNote = async (subjectId, noteFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${subjectId}/notes`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(noteFormData),
+    });
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+// Delete a note
+const deleteNote = async (subjectId, noteId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    if (res.status === 204) return true;
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+// update a note
+const updateNote = async (subjectId, noteId, noteFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(noteFormData),
+    });
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // ======== Study Sessions ========
 
@@ -156,7 +151,6 @@ const getSessions = async ({ subjectId, from, to }) => {
     console.log(err);
   }
 };
-
 // Create a new study session
 const createSession = async (data) => {
   // Only send date, title, notes, and status
@@ -180,7 +174,6 @@ const createSession = async (data) => {
     console.log(err);
   }
 };
-
 // Update an existing study session
 const updateSession = async (sessionId, put) => {
   // Only send date, title, notes, and status
@@ -204,7 +197,6 @@ const updateSession = async (sessionId, put) => {
     console.log(err);
   }
 };
-
 // Delete a study session
 const deleteSession = async (id) => {
   try {

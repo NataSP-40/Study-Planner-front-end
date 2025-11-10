@@ -45,6 +45,7 @@ const Dashboard = () => {
     const fetchUsersWithSubjects = async () => {
       try {
         const fetchedUsersWithSubjects = await userService.indexWithSubjects();
+        console.log("Fetched users with subjects:", fetchedUsersWithSubjects);
         // Filter out the current user from the public list
         const otherUsers = fetchedUsersWithSubjects.filter(
           (u) => u._id !== user.payload._id

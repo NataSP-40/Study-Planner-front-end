@@ -1,8 +1,8 @@
 // ============================================
 // Import SCSS utilities
 // ============================================
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 // ============================================
 // Dashboard Layout
@@ -28,7 +28,7 @@
   @include flex-column;
   @include card($spacing-lg);
   @include smooth-scroll;
-  
+
   // Each panel can have specific overrides
 }
 
@@ -49,7 +49,6 @@
   min-width: 250px;
   max-width: 300px;
 }
-
 
 // ============================================
 // Responsive Design - Using mixin
@@ -117,3 +116,26 @@
   white-space: nowrap;
 }
 
+// ============================================
+// Username Card Styling (Dashboard Right)
+// ============================================
+:global(.username-card) {
+  background: linear-gradient(135deg, $primary-color 0%, #764ba2 100%);
+  border: none !important;
+  box-shadow: $shadow-md;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  h3 {
+    color: white !important;
+    font-weight: 600;
+  }
+
+  span {
+    color: white !important;
+  }
+}

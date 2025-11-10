@@ -68,12 +68,18 @@
 }
 
 .add-session-btn.add {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 .add-session-btn.add:hover {
-  background-color: var(--primary-dark);
+  background: linear-gradient(
+    135deg,
+    darken(#667eea, 10%) 0%,
+    darken(#764ba2, 10%) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .add-session-btn.cancel {
@@ -100,12 +106,18 @@
 }
 
 .action-btn.add {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 .action-btn.add:hover {
-  background-color: var(--primary-dark);
+  background: linear-gradient(
+    135deg,
+    darken(#667eea, 10%) 0%,
+    darken(#764ba2, 10%) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .action-btn.cancel {
@@ -267,12 +279,18 @@
 }
 
 .editBtn {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 .editBtn:hover {
-  background-color: var(--primary-dark);
+  background: linear-gradient(
+    135deg,
+    darken(#667eea, 10%) 0%,
+    darken(#764ba2, 10%) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .deleteBtn {

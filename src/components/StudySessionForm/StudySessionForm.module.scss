@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .container {
   max-width: 720px;
   margin: 0 auto;
@@ -34,11 +36,22 @@
 
 .primary-btn {
   padding: 0.6rem 1rem;
-  background-color: #0d6efd;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(
+    135deg,
+    color.adjust(#667eea, $lightness: -10%) 0%,
+    color.adjust(#764ba2, $lightness: -10%) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .secondary-btn {

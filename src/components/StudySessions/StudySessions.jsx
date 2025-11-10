@@ -89,7 +89,24 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
       )}
 
       {/* Add session button */}
-      <button
+      {subjects.length > 0 ? (
+        <button
+          onClick={() => {
+            setShowSessionForm(!showSessionForm);
+            setEditingSessionId(null);
+          }}
+          className={`${styles["add-session-btn"]} ${
+            showSessionForm ? styles.cancel : styles.add
+          }`}
+        >
+          {showSessionForm ? "✕ Cancel" : "+ Plan New Session"}
+        </button>
+      ) : (
+        <p className={styles.emptyState}>
+          Please create a subject first before planning study sessions.
+        </p>
+      )}
+      {/* <button
         onClick={() => {
           setShowSessionForm(!showSessionForm);
           setEditingSessionId(null);
@@ -99,7 +116,7 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
         }`}
       >
         {showSessionForm ? "✕ Cancel" : "+ Plan New Session"}
-      </button>
+      </button> */}
 
       {/* Subject filter - only show if we have subjects and no specific subjectId */}
       {!subjectId && subjects.length > 0 && (

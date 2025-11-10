@@ -22,7 +22,7 @@ const index = async () => {
 // Fetch all users with their subjects and notes for public viewing
 const indexWithSubjects = async () => {
   try {
-    const res = await fetch(`${BASE_URL}/users/subjects`, {
+    const res = await fetch(`${BASE_URL}/subjects`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
 

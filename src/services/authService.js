@@ -28,7 +28,7 @@ const signUp = async (formData) => {
 
 const signIn = async (formData) => {
   try {
-    const res = await fetch(`${BASE_URL}/sign-in`, {
+    const res = await fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

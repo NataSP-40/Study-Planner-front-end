@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .container {
   margin-top: 80px; /* Account for fixed navbar */
   padding: 2rem;
@@ -51,18 +53,24 @@
 
 .submit-btn {
   padding: 0.75rem 1.5rem;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(
+    135deg,
+    color.adjust(#667eea, $lightness: -10%) 0%,
+    color.adjust(#764ba2, $lightness: -10%) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .submit-btn:active {
