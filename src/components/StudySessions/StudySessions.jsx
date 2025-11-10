@@ -67,7 +67,7 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>Study Sessions</h2>
+        <h2>Study Stats</h2>
       </div>
 
       {/* Stats - only show when viewing all sessions (not filtered to specific subject) */}
@@ -87,6 +87,9 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
           </div>
         </div>
       )}
+
+      {/* Study Sessions heading */}
+      <h2 className={styles.sectionTitle}>Study Sessions</h2>
 
       {/* Add session button */}
       {subjects.length > 0 ? (

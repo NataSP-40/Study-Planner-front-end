@@ -7,7 +7,7 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 0;
 }
@@ -16,6 +16,14 @@
   margin: 0;
   font-size: 1.25rem;
   color: var(--text-primary);
+  text-align: center;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  text-align: center;
 }
 
 /* Stats section */

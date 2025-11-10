@@ -1,0 +1,121 @@
+@use "../../styles/variables" as *;
+
+.container {
+  margin-top: 2rem;
+}
+
+.emptyMessage {
+  margin: 0;
+}
+
+.userCard {
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, $primary-color 0%, #764ba2 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: white;
+  }
+
+  span {
+    color: white;
+  }
+}
+
+.userHeader {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.userContent {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.noSubjects {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.subjectCard {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background-color: #fff;
+}
+
+.subjectHeader {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.subjectTitle {
+  margin: 0 0 0.5rem 0;
+}
+
+.subjectDescription {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.subjectMeta {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.subjectContent {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.notesList {
+  list-style: none;
+  padding: 0;
+}
+
+.noteItem {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #fafafa;
+}
+
+.noteTitle {
+  margin: 0 0 0.25rem 0;
+  font-weight: bold;
+}
+
+.noteContent {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.noteMeta {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.noNotes {
+  color: #888;
+  font-size: 0.9rem;
+}
