@@ -22,16 +22,14 @@ const RichTextEditor = ({ value, onChange, placeholder }) => {
   ];
 
   return (
-    <main className="rich-text-editor">
-      <ReactQuill
-        theme="snow"
-        value={value}
-        onChange={onChange}
-        modules={modules}
-        formats={formats}
-        placeholder={placeholder}
-      />
-    </main>
+    <ReactQuill
+      theme="snow"
+      value={value}
+      onChange={onChange}
+      modules={modules}
+      formats={formats}
+      placeholder={placeholder}
+    />
   );
 };
 export default RichTextEditor;

@@ -3,9 +3,6 @@ import DOMPurify from "dompurify";
 import styles from "./PublicUserList.module.scss";
 
 const PublicUserList = ({ users }) => {
-  console.log("PublicUserList received users:", users);
-  console.log("Users array length:", users?.length);
-
   const [expandedUsers, setExpandedUsers] = useState({});
   const [expandedSubjects, setExpandedSubjects] = useState({});
 
@@ -39,7 +36,6 @@ const PublicUserList = ({ users }) => {
                 <h3>{user.username}</h3>
                 <span>{expandedUsers[user._id] ? "▼" : "▶"}</span>
               </div>
-
               {expandedUsers[user._id] && (
                 <div className={styles.userContent}>
                   {user.subjects && user.subjects.length > 0 ? (
@@ -72,7 +68,6 @@ const PublicUserList = ({ users }) => {
                             {expandedSubjects[subject._id] ? "▼" : "▶"}
                           </span>
                         </div>
-
                         {expandedSubjects[subject._id] && (
                           <div className={styles.subjectContent}>
                             <h5>Notes:</h5>

@@ -12,10 +12,9 @@ const getUserFromToken = () => {
 
 function UserProvider({ children }) {
   const [user, setUser] = useState(getUserFromToken());
-  const [subjects, setSubjects] = useState([]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, subjects, setSubjects }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
   );

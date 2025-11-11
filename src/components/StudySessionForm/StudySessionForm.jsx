@@ -8,7 +8,6 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
     today.getMonth() + 1
   ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
-  // Format the initial date if exists
   const formatDate = (dateString) => {
     if (!dateString) return defaultDate;
     const date = new Date(dateString);
@@ -18,7 +17,6 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
     )}-${String(date.getDate()).padStart(2, "0")}`;
   };
 
-  // 2) Prefill when editing (no helpers, all inline)
   const [date, setDate] = useState(formatDate(initial?.date));
   const [title, setTitle] = useState(initial?.title || "");
   const [notes, setNotes] = useState(initial?.notes || "");
@@ -91,7 +89,6 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
             required
           />
         </div>
-
         <div className={styles["form-group"]}>
           <label htmlFor="title">Title (optional)</label>
           <input
@@ -104,7 +101,6 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
             maxLength={120}
           />
         </div>
-
         <div className={styles["form-group"]}>
           <label htmlFor="notes">Notes (optional)</label>
           <textarea
@@ -116,7 +112,6 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
             rows={3}
           />
         </div>
-
         <div className={styles["form-group"]}>
           <label htmlFor="status">Status</label>
           <select
@@ -130,9 +125,7 @@ const StudySessionForm = ({ initial, subjectId, onSaved, onCancel }) => {
             <option value="canceled">canceled</option>
           </select>
         </div>
-
         {error && <p className={styles.error}>{error}</p>}
-
         <div className={styles.actions}>
           <button
             type="button"

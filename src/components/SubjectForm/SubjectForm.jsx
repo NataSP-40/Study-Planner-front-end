@@ -6,8 +6,6 @@ import RichTextEditor from "../RichTextEditor";
 
 const SubjectForm = (props) => {
   const { subjectId } = useParams();
-  // console.log("subjectId", subjectId);
-
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -36,7 +34,6 @@ const SubjectForm = (props) => {
       props.handleUpdateSubject(subjectId, formData);
     } else {
       props.handleAddSubject(formData);
-      console.log("formData", formData);
     }
   };
 

@@ -19,9 +19,7 @@ const Landing = () => {
           </Link>
         </div>
         <div className={styles.rightSection}>
-          {/* Image will be added here later */}
           <div className={styles.imagePlaceholder}>
-            {/* <p>Your image goes here</p> */}
             <img
               src="https://i.ibb.co/nMZcP0SH/Logo2.png"
               alt="Study Planner Logo"

@@ -10,8 +10,6 @@ const SubjectList = (props) => {
           + Add New Subject
         </Link>
       </div>
-      {/* Render subject list here */}
-
       {props.subjects.map((subject) => {
         const notesCount = subject.notes?.length || 0;
         const sessionsCount = subject.studySessions?.length || 0;

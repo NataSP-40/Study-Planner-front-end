@@ -10,7 +10,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
   const [editingSessionId, setEditingSessionId] = useState(null);
   const [selectedSubjectId, setSelectedSubjectId] = useState(subjectId);
 
-  // Fetch sessions based on subjectId filter
   useEffect(() => {
     const fetchSessions = async () => {
       try {
@@ -20,12 +19,12 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
         const list = await studyService.getSessions(params);
         setSessions(Array.isArray(list) ? list : []);
       } catch (err) {
-        console.log("Error fetching sessions:", err);
+        console.log(err);
         setSessions([]);
       }
     };
     fetchSessions();
-  }, [selectedSubjectId, showSessionForm]);
+  }, [selectedSubjectId]);
 
   const handleSessionSaved = async () => {
     setShowSessionForm(false);
@@ -35,19 +34,18 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
       const list = await studyService.getSessions(params);
       setSessions(Array.isArray(list) ? list : []);
     } catch (err) {
-      console.log("Error refreshing sessions:", err);
+      console.log(err);
     }
   };
 
   const handleDeleteSession = async (sessionId) => {
-    if (!window.confirm("Delete this session?")) return;
     try {
       await studyService.deleteSession(sessionId);
       const params = selectedSubjectId ? { subjectId: selectedSubjectId } : {};
       const list = await studyService.getSessions(params);
       setSessions(Array.isArray(list) ? list : []);
     } catch (err) {
-      console.log("Error deleting session:", err);
+      console.log(err);
     }
   };
 
@@ -56,7 +54,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
     return subject ? subject.name : "Unknown Subject";
   };
 
-  // Calculate stats
   const totalSubjects = subjects.length;
   const totalNotes = subjects.reduce(
     (acc, subject) => acc + (subject.notes ? subject.notes.length : 0),
@@ -69,8 +66,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
       <div className={styles.header}>
         <h2>Study Stats</h2>
       </div>
-
-      {/* Stats - only show when viewing all sessions (not filtered to specific subject) */}
       {!subjectId && subjects.length > 0 && (
         <div className={styles.stats}>
           <div className={styles.statCard}>
@@ -87,11 +82,7 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
           </div>
         </div>
       )}
-
-      {/* Study Sessions heading */}
       <h2 className={styles.sectionTitle}>Study Sessions</h2>
-
-      {/* Add session button */}
       {subjects.length > 0 ? (
         <button
           onClick={() => {
@@ -109,19 +100,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
           Please create a subject first before planning study sessions.
         </p>
       )}
-      {/* <button
-        onClick={() => {
-          setShowSessionForm(!showSessionForm);
-          setEditingSessionId(null);
-        }}
-        className={`${styles["add-session-btn"]} ${
-          showSessionForm ? styles.cancel : styles.add
-        }`}
-      >
-        {showSessionForm ? "✕ Cancel" : "+ Plan New Session"}
-      </button> */}
-
-      {/* Subject filter - only show if we have subjects and no specific subjectId */}
       {!subjectId && subjects.length > 0 && (
         <div className={styles.filter}>
           <label htmlFor="subject-filter">Filter by subject:</label>
@@ -140,7 +118,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
           </select>
         </div>
       )}
-
       {showSessionForm && (
         <div className={styles.formContainer}>
           <StudySessionForm
@@ -164,7 +141,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
           />
         </div>
       )}
-
       <div className={styles.sessionsList}>
         {sessions && sessions.length > 0 ? (
           sessions.map((session) => (
@@ -179,20 +155,17 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
                   {session.status || "planned"}
                 </span>
               </div>
-
               {!subjectId && (
                 <p className={styles.subjectName}>
                   📚 {getSubjectName(session.subjectId)}
                 </p>
               )}
-
               <p className={styles.date}>
                 📅{" "}
                 {session.date
                   ? new Date(session.date).toLocaleDateString()
                   : "No date"}
               </p>
-
               {session.notes && (
                 <div
                   className={styles.notes}
@@ -201,7 +174,6 @@ const StudySessions = ({ subjectId = null, subjects = [] }) => {
                   }}
                 />
               )}
-
               <div className={styles.actions}>
                 <button
                   onClick={() => {

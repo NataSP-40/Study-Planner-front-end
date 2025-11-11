@@ -3,11 +3,8 @@ const SESSIONS_BASE_URL = `${
   import.meta.env.VITE_BACK_END_SERVER_URL
 }/sessions`;
 
-// ======== Subjects ========
-// Get all subjects
 const index = async () => {
   try {
-    // console.log(BASE_URL);
     const res = await fetch(BASE_URL, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
@@ -16,7 +13,7 @@ const index = async () => {
     console.log(err);
   }
 };
-// Get a single subject by ID
+
 const show = async (subjectId) => {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}`, {
@@ -27,7 +24,7 @@ const show = async (subjectId) => {
     console.log(err);
   }
 };
-// Create a new subject
+
 const createSubject = async (subjectFormData) => {
   try {
     const res = await fetch(BASE_URL, {
@@ -43,7 +40,7 @@ const createSubject = async (subjectFormData) => {
     console.log(err);
   }
 };
-// Delete a subject
+
 const deleteSubject = async (subjectId) => {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}`, {
@@ -53,22 +50,18 @@ const deleteSubject = async (subjectId) => {
       },
     });
 
-    console.log("Delete response status:", res.status);
-
     if (!res.ok) {
       const errorText = await res.text();
-      console.error("Delete failed:", errorText);
       throw new Error(`Failed to delete: ${res.status} ${errorText}`);
     }
 
     const data = await res.json();
-    console.log("Delete successful:", data);
     return data;
   } catch (err) {
     console.log(err);
   }
 };
-// Update a subject
+
 async function updateSubject(subjectId, subjectFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}`, {
@@ -84,8 +77,7 @@ async function updateSubject(subjectId, subjectFormData) {
     console.log(err);
   }
 }
-//======= Notes ========
-// Create a new note for a subject
+
 const createNote = async (subjectId, noteFormData) => {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}/notes`, {
@@ -101,7 +93,7 @@ const createNote = async (subjectId, noteFormData) => {
     console.log(err);
   }
 };
-// Delete a note
+
 const deleteNote = async (subjectId, noteId) => {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
@@ -116,7 +108,7 @@ const deleteNote = async (subjectId, noteId) => {
     console.log(err);
   }
 };
-// update a note
+
 const updateNote = async (subjectId, noteId, noteFormData) => {
   try {
     const res = await fetch(`${BASE_URL}/${subjectId}/notes/${noteId}`, {
@@ -133,9 +125,6 @@ const updateNote = async (subjectId, noteId, noteFormData) => {
   }
 };
 
-// ======== Study Sessions ========
-
-// Get study sessions for a subject, with optional date range
 const getSessions = async ({ subjectId, from, to }) => {
   try {
     const params = new URLSearchParams();
@@ -151,9 +140,8 @@ const getSessions = async ({ subjectId, from, to }) => {
     console.log(err);
   }
 };
-// Create a new study session
+
 const createSession = async (data) => {
-  // Only send date, title, notes, and status
   const { subjectId, date, title, notes, status } = data;
   const payload = { subjectId, date, title, notes, status };
   try {
@@ -167,16 +155,14 @@ const createSession = async (data) => {
     });
     if (!res.ok) {
       const text = await res.text();
-      console.error("createSession failed:", res.status, text);
     }
     return res.json();
   } catch (err) {
     console.log(err);
   }
 };
-// Update an existing study session
+
 const updateSession = async (sessionId, put) => {
-  // Only send date, title, notes, and status
   const { date, title, notes, status } = put;
   const payload = { date, title, notes, status };
   try {
@@ -190,14 +176,13 @@ const updateSession = async (sessionId, put) => {
     });
     if (!res.ok) {
       const text = await res.text();
-      console.error("updateSession failed:", res.status, text);
     }
     return res.json();
   } catch (err) {
     console.log(err);
   }
 };
-// Delete a study session
+
 const deleteSession = async (id) => {
   try {
     const res = await fetch(`${SESSIONS_BASE_URL}/${id}`, {

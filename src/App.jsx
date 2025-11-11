@@ -11,7 +11,6 @@ import SubjectList from "./components/SubjectList/SubjectList";
 import NoteList from "./components/NoteList/NoteList";
 import SubjectDetails from "./components/SubjectDetails/SubjectDetails";
 import SubjectForm from "./components/SubjectForm/SubjectForm";
-import NoteForm from "./components/NoteForm/NoteForm";
 import NoteEditPage from "./components/NoteEditPage/NoteEditPage";
 
 import { UserContext } from "./contexts/UserContext";
@@ -24,14 +23,12 @@ const App = () => {
   useEffect(() => {
     const fetchAllSubjects = async () => {
       const subjectsData = await studyService.index();
-      console.log("subjectsData", subjectsData);
       setSubjects(subjectsData);
     };
     if (user) fetchAllSubjects();
   }, [user]);
 
   const handleAddSubject = async (subjectFormData) => {
-    console.log("subjectFormData", subjectFormData);
     const newSubject = await studyService.createSubject(subjectFormData);
     setSubjects([...subjects, newSubject]);
     navigate("/subjects");
@@ -47,7 +44,6 @@ const App = () => {
   };
 
   const handleUpdateSubject = async (subjectId, subjectFormData) => {
-    console.log("Updating subject:", subjectId, subjectFormData);
     const updatedSubject = await studyService.updateSubject(
       subjectId,
       subjectFormData
@@ -64,7 +60,10 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={user ? <Dashboard /> : <Landing />} />
+        <Route
+          path="/"
+          element={user ? <Dashboard subjects={subjects} /> : <Landing />}
+        />
         {user ? (
           <>
             <Route

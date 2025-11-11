@@ -7,11 +7,9 @@ const index = async () => {
     });
 
     const data = await res.json();
-
     if (data.err) {
       throw new Error(data.err);
     }
-
     return data;
   } catch (err) {
     console.log(err);
@@ -19,19 +17,15 @@ const index = async () => {
   }
 };
 
-// Fetch all users with their subjects and notes for public viewing
 const indexWithSubjects = async () => {
   try {
     const res = await fetch(`${BASE_URL}/subjects`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
-
     const data = await res.json();
-
     if (data.err) {
       throw new Error(data.err);
     }
-
     return data;
   } catch (err) {
     console.log(err);

@@ -2,8 +2,6 @@
 
 ![Study Planner Logo/Screenshot](./src/assets/su_screensh.png)
 
-<!-- Replace the path above with your screenshot or logo -->
-
 ## About
 
 Study Planner is a comprehensive web application designed to help students organize their study sessions, track their progress, and manage their learning materials effectively. Built with modern web technologies, this application provides an intuitive interface for managing subjects, creating notes with rich text formatting, and monitoring study statistics.
@@ -22,8 +20,8 @@ In today's fast-paced educational environment, students need effective tools to 
 - **User Authentication**: Secure sign-up and sign-in functionality
 - **Subject Management**: Create, edit, and delete subjects with custom details
 - **Rich Note Taking**: Create notes with a powerful rich text editor supporting formatting
-- **Study Session Tracking**: Log and monitor study sessions with duration and subject tracking
-- **Public User Directory**: Connect with other users in the study community -->
+- **Study Session Tracking**: Log and monitor study sessions with subject tracking
+- **Public User Directory**: Connect with other users in the study community
 - **Responsive Design**: Seamless experience across desktop and mobile devices
 - **Personalized Dashboard**: Quick access to subjects, recent notes, and study statistics
 
@@ -33,19 +31,13 @@ In today's fast-paced educational environment, students need effective tools to 
 
 🔗 [Live App]()
 
-<!-- Add your deployed app link here -->
-
 ### Planning Materials
 
 📋 [Trello Board](https://trello.com/b/e9LB82Pk/study-planner)
 
-<!-- Add your Trello board link here -->
-
 ### Back-End Repository
 
 💾 [Back-End Repo](https://github.com/NataSP-40/Study-Planner-back-end.git)
-
-<!-- Add your back-end repository link here -->
 
 ### Local Development
 
@@ -91,8 +83,6 @@ npm run dev
 
 ### Back-End
 
-<!-- List your back-end technologies here, for example: -->
-
 - **Node.js** - JavaScript runtime
 - **Express** - Web application framework
 - **MongoDB** - NoSQL database
@@ -128,7 +118,6 @@ Study-Planner-front-end/
 │   │   ├── SignUpForm/     # Authentication - Sign up
 │   │   ├── StudySessionForm/ # Study session logging
 │   │   ├── StudySessions/  # Study sessions display
-│   │   ├── StudyStats/     # Statistics visualization
 │   │   ├── SubjectDetails/ # Individual subject view
 │   │   ├── SubjectForm/    # Subject creation/editing
 │   │   └── SubjectList/    # Subjects display
@@ -158,8 +147,6 @@ Study-Planner-front-end/
 
 - [React Quill] - Rich text editor
 - [DOMPurify] - HTML sanitization
-  <!-- - Icons and design inspiration from [source if applicable] -->
-  <!-- Add any additional attributions here -->
 
 ## Next Steps
 
