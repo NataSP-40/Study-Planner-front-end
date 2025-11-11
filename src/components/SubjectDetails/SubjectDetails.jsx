@@ -25,6 +25,7 @@ const SubjectDetails = (props) => {
   const handleDelete = async () => {
     try {
       await props.handleDeleteSubject(subjectId);
+      props.refreshSubjects();
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +37,7 @@ const SubjectDetails = (props) => {
       const updatedSubject = await studyService.show(subjectId);
       setSubject(updatedSubject);
       setShowNoteForm(false);
+      props.refreshSubjects();
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +65,7 @@ const SubjectDetails = (props) => {
       const updatedSubject = await studyService.show(subjectId);
       setSubject(updatedSubject);
       setEditingNoteId(null);
+      props.refreshSubjects();
     } catch (error) {
       console.log(error);
     }

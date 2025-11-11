@@ -56,6 +56,11 @@ const App = () => {
     navigate(`/subjects/${subjectId}`);
   };
 
+  const refreshSubjects = async () => {
+    const subjectsData = await studyService.index();
+    setSubjects(subjectsData);
+  };
+
   return (
     <>
       <NavBar />
@@ -83,7 +88,10 @@ const App = () => {
             <Route
               path="/subjects/:subjectId"
               element={
-                <SubjectDetails handleDeleteSubject={handleDeleteSubject} />
+                <SubjectDetails
+                  handleDeleteSubject={handleDeleteSubject}
+                  refreshSubjects={refreshSubjects}
+                />
               }
             />
             <Route
