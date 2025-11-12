@@ -12,12 +12,11 @@ const SignUpForm = () => {
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
     password: "",
     passwordConf: "",
   });
 
-  const { username, email, password, passwordConf } = formData;
+  const { username, password, passwordConf } = formData;
 
   const handleChange = (evt) => {
     setMessage("");
@@ -36,7 +35,7 @@ const SignUpForm = () => {
   };
 
   const isFormInvalid = () => {
-    return !(username && email && password && password === passwordConf);
+    return !(username && password && password === passwordConf);
   };
 
   return (
@@ -63,21 +62,7 @@ const SignUpForm = () => {
               placeholder="Enter your username"
             />
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label}>
-              Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              name="email"
-              onChange={handleChange}
-              required
-              className={styles.input}
-              placeholder="Enter your email"
-            />
-          </div>
+          
           <div className={styles.formGroup}>
             <label htmlFor="password" className={styles.label}>
               Password:
