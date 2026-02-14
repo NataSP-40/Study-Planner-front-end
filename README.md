@@ -29,7 +29,7 @@ In today's fast-paced educational environment, students need effective tools to 
 
 ### Deployed Application
 
-🔗 [Live App]()
+🔗 [Live App](https://study-planner-gamma-ten.vercel.app/)
 
 ### Planning Materials
 
